@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>bantuinaja.id — Feed Awal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Gaya "Editorial elegan" — warna website (biru #00558E, navy #002248, putih).
+     Referensi: foto penuh + gradasi, sans tebal + aksen serif miring, garis tipis, kartu bayangan lembut. */
+  :root { --navy: #002248; --blue: #00558E; --sky: #8EC5F0; --mist: #F1F6FB; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #CBD5E1; font-family: "Plus Jakarta Sans", system-ui, sans-serif; padding: 40px; display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
+  .serif, mark, .bignum, .quote, .quote-mark, .promo-big, .logo-big span { font-family: "Instrument Serif", Georgia, serif; }
+
+  .slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; padding: 92px 88px 84px; display: flex; flex-direction: column; color: var(--fg); }
+  .slide > * { position: relative; z-index: 1; }
+
+  .white {
+    --fg: var(--navy); --muted: #5B6B82; --accent: var(--blue); --line: rgba(0,34,72,.14);
+    --soft: var(--mist); --btn-bg: var(--navy); --btn-fg: #fff; --tag-bg: var(--navy); --tag-fg: #fff; --tag-l: var(--sky);
+    background: radial-gradient(900px 640px at 105% -8%, #E6F0FA 0%, rgba(230,240,250,0) 62%), #fff;
+  }
+  .blue {
+    --fg: #fff; --muted: rgba(255,255,255,.74); --accent: var(--sky); --line: rgba(255,255,255,.24);
+    --soft: rgba(255,255,255,.08); --btn-bg: #fff; --btn-fg: var(--navy); --tag-bg: #fff; --tag-fg: var(--navy); --tag-l: var(--blue);
+    background: radial-gradient(900px 700px at 100% 0%, #0A6CB5 0%, rgba(10,108,181,0) 60%), linear-gradient(160deg, var(--blue) 0%, #003865 55%, var(--navy) 100%);
+  }
+
+  /* header */
+  .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 72px; }
+  .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 800; font-size: 32px; letter-spacing: -0.5px; }
+  .brand::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .brand .tag { font-size: 15px; font-weight: 700; letter-spacing: 4px; color: var(--muted); border-left: 1.5px solid var(--line); padding-left: 14px; }
+  .count { font-size: 20px; font-weight: 600; letter-spacing: 4px; color: var(--muted); }
+
+  .kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 18px; font-size: 19px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 34px; }
+  .kicker::before { content: ""; width: 48px; height: 2px; background: currentColor; }
+
+  h1 { font-size: 90px; line-height: 1.02; font-weight: 800; letter-spacing: -3px; }
+  h1.md { font-size: 78px; letter-spacing: -2.5px; }
+  h2 { font-size: 60px; line-height: 1.08; font-weight: 800; letter-spacing: -2px; }
+  mark { background: none; color: var(--accent); font-style: italic; font-weight: 400; font-size: 1.14em; letter-spacing: -1px; line-height: .9; }
+  p.sub { font-size: 33px; line-height: 1.5; font-weight: 500; margin-top: 30px; color: var(--muted); max-width: 880px; }
+  .spacer { flex: 1; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 44px; }
+  .pill { font-size: 23px; font-weight: 600; padding: 11px 22px; border-radius: 999px; border: 1.5px solid var(--line); }
+
+  .checks { list-style: none; margin-top: 44px; display: flex; flex-direction: column; gap: 20px; }
+  .checks li { font-size: 33px; font-weight: 600; display: flex; gap: 20px; align-items: center; }
+  .checks li::before { content: "✓"; flex: none; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent); font-weight: 800; font-size: 21px; display: grid; place-items: center; }
+
+  /* step slide */
+  .bignum { font-size: 300px; font-style: italic; font-weight: 400; line-height: .78; letter-spacing: -8px; color: var(--accent); margin: 10px 0 40px -6px; }
+  .body { font-size: 37px; line-height: 1.55; font-weight: 500; margin-top: 28px; color: var(--muted); }
+  .tip { margin-top: 44px; font-size: 29px; line-height: 1.5; font-weight: 600; background: var(--soft); border-left: 3px solid var(--accent); padding: 26px 30px; border-radius: 0 18px 18px 0; }
+  .tip::before { content: "Tips — "; font-weight: 800; color: var(--accent); }
+
+  /* daftar harga: satu kartu putih, baris dipisah garis tipis */
+  .rows { margin-top: 48px; background: #fff; color: var(--navy); border-radius: 28px; padding: 6px 38px; box-shadow: 0 40px 80px -36px rgba(0,34,72,.45), 0 0 0 1px rgba(0,34,72,.06); display: flex; flex-direction: column; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 0; border-bottom: 1px solid rgba(0,34,72,.1); }
+  .row:last-child { border-bottom: 0; }
+  .row .n { font-size: 33px; font-weight: 700; line-height: 1.3; }
+  .row .n small { display: block; font-size: 23px; font-weight: 500; color: #5B6B82; margin-top: 4px; }
+  .row .p { font-size: 34px; font-weight: 800; color: var(--blue); white-space: nowrap; text-align: right; letter-spacing: -.5px; }
+  .row .p small { display: block; font-size: 20px; font-weight: 600; color: #5B6B82; letter-spacing: 0; }
+  .note { font-size: 24px; color: var(--muted); margin-top: 28px; font-weight: 500; }
+
+  .compare { margin-top: 56px; display: flex; flex-direction: column; gap: 22px; }
+  .bubble { border-radius: 26px; padding: 30px 36px; font-size: 33px; line-height: 1.45; font-weight: 600; }
+  .bubble b { display: block; font-size: 17px; font-weight: 700; letter-spacing: 4px; margin-bottom: 12px; }
+  .bubble.no { border: 1.5px dashed var(--line); color: var(--muted); }
+  .bubble.no span { text-decoration: line-through; text-decoration-thickness: 2px; }
+  .bubble.yes { background: #fff; color: var(--navy); box-shadow: 0 40px 80px -36px rgba(0,0,0,.5); }
+  .bubble.yes b { color: var(--blue); }
+
+  .tag-price { margin-top: 44px; align-self: flex-start; background: var(--tag-bg); color: var(--tag-fg); border-radius: 24px; padding: 22px 36px; box-shadow: 0 30px 60px -28px rgba(0,34,72,.55); }
+  .tag-price .l { font-size: 17px; font-weight: 700; letter-spacing: 4px; color: var(--tag-l); }
+  .tag-price .v { font-size: 50px; font-weight: 800; letter-spacing: -1.5px; }
+
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 22px; font-weight: 600; letter-spacing: .5px; color: var(--muted); }
+  .foot .swipe { color: var(--fg); border: 1.5px solid var(--line); padding: 12px 26px; border-radius: 999px; white-space: nowrap; }
+
+  .wa { align-self: flex-start; margin-top: 48px; display: inline-flex; align-items: center; gap: 22px; background: var(--btn-bg); color: var(--btn-fg); border-radius: 999px; padding: 22px 40px; box-shadow: 0 30px 60px -28px rgba(0,34,72,.6); }
+  .wa .l { font-size: 16px; font-weight: 700; letter-spacing: 3px; opacity: .7; }
+  .wa .v { font-size: 40px; font-weight: 800; letter-spacing: -.5px; }
+
+  .logo-big { font-size: 122px; font-weight: 800; letter-spacing: -5px; line-height: 1; margin-bottom: 24px; }
+  .logo-big span { font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: -2px; }
+
+  .ps { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+  .ps .item { background: #fff; color: var(--navy); border-radius: 24px; padding: 26px 34px; box-shadow: 0 30px 60px -34px rgba(0,34,72,.45), 0 0 0 1px rgba(0,34,72,.06); }
+  .ps .q { font-size: 27px; color: #5B6B82; font-weight: 500; line-height: 1.4; font-style: italic; }
+  .ps .a { font-size: 33px; font-weight: 700; margin-top: 8px; line-height: 1.35; }
+  .ps .a::before { content: "→ "; color: var(--blue); }
+
+  .quote-mark { font-size: 340px; line-height: .8; height: 170px; color: var(--accent); }
+  .quote { font-size: 70px; line-height: 1.12; font-weight: 400; letter-spacing: -1px; }
+  .quote mark { font-size: 1em; }
+  .who { margin-top: 56px; display: flex; gap: 22px; align-items: center; font-size: 26px; color: var(--muted); }
+  .who b { display: block; color: var(--fg); font-size: 30px; }
+  .avatar { width: 88px; height: 88px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 30px; flex: none; }
+
+  .promo-big { font-size: 330px; font-weight: 400; line-height: .8; letter-spacing: -10px; margin: 0 0 20px -8px; }
+  .promo-code { margin-top: 30px; align-self: flex-start; border: 1.5px dashed var(--line); border-radius: 18px; padding: 18px 28px; font-size: 27px; font-weight: 600; }
+  .promo-code b { color: var(--accent); letter-spacing: 3px; }
+
+
+  /* loker mitra: 6 posisi dalam kartu putih di latar biru */
+  .loker { padding-top: 80px; padding-bottom: 72px; }
+  .loker .top { margin-bottom: 46px; }
+  .loker .rings { display: none; }
+  .loker h1 { font-size: 72px; letter-spacing: -2.5px; }
+  .loker .perks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .loker .perks span { font-size: 21px; font-weight: 700; padding: 9px 18px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.28); }
+  .loker .perks span b { color: var(--sky); }
+  .jobs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 34px; }
+  .job { background: #fff; color: var(--navy); border-radius: 22px; padding: 20px 24px 20px; box-shadow: 0 30px 60px -34px rgba(0,10,30,.6); }
+  .job .h { display: flex; align-items: baseline; gap: 12px; }
+  .job .no { font-family: "Instrument Serif", serif; font-style: italic; font-size: 40px; line-height: .8; color: var(--blue); }
+  .job .t { font-size: 25px; font-weight: 800; letter-spacing: -.5px; line-height: 1.15; }
+  .job .d { font-size: 18px; color: #5B6B82; margin-top: 6px; font-weight: 500; line-height: 1.35; }
+  .job .q { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(0,34,72,.1); font-size: 17.5px; font-weight: 600; line-height: 1.4; }
+  .job .q::before { content: "SYARAT  "; font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--blue); }
+  .loker .umum { margin-top: 22px; font-size: 20px; line-height: 1.5; color: var(--muted); }
+  .loker .umum b { color: #fff; }
+  .loker .cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 22px; }
+  .loker .cta .wa { margin: 0; padding: 18px 32px; }
+  .loker .cta .wa .v { font-size: 32px; }
+  .loker .cta .note2 { font-size: 19px; color: var(--muted); line-height: 1.45; text-align: right; }
+  /* foto b-roll */
+  .credit { position: absolute; z-index: 3; font-size: 15px; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,.9); background: rgba(0,20,45,.45); padding: 6px 12px; border-radius: 999px; }
+  /* foto penuh satu bidang (latar biru) */
+  .full { --fg: #fff; --muted: rgba(255,255,255,.8); --accent: var(--sky); --line: rgba(255,255,255,.28); }
+  .full .bg-photo { position: absolute; inset: 0; z-index: 0; background-size: cover; }
+  .full .bg-shade { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(0,34,72,.55) 0%, rgba(0,34,72,0) 20%, rgba(0,34,72,.15) 36%, rgba(0,34,72,.78) 56%, rgba(0,34,72,.96) 72%, var(--navy) 100%); }
+  .full .credit { top: 150px; right: 88px; }
+  .full .top .kicker { color: #fff; }
+  /* foto di bagian atas (latar putih) */
+  .photo-top { padding-top: 600px; }
+  .photo-top .hero-photo { position: absolute; top: 0; left: 0; right: 0; height: 640px; z-index: 0; background-size: cover; }
+  .photo-top .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,20,45,.5) 0%, rgba(0,20,45,0) 26%, rgba(255,255,255,0) 62%, #fff 100%); }
+  .photo-top .top { position: absolute; top: 80px; left: 88px; right: 88px; margin: 0; --fg: #fff; --muted: rgba(255,255,255,.85); --line: rgba(255,255,255,.4); --accent: #fff; color: #fff; }
+  .photo-top .credit { top: 140px; right: 88px; }
+  .photo-top h1 { font-size: 74px; }
+  .photo-top h1.md { font-size: 66px; letter-spacing: -2px; }
+  .photo-top p.sub { font-size: 30px; margin-top: 20px; }
+  .photo-top .kicker { margin-bottom: 24px; }
+  .photo-top .checks { margin-top: 30px; gap: 14px; }
+  .photo-top .checks li { font-size: 30px; }
+  .photo-top .rows { margin-top: 30px; }
+  /* foto berbingkai garis tipis (sampul carousel putih) */
+  .photo { flex: 1; min-height: 0; margin: 56px 16px 52px; border-radius: 28px; background-size: cover; outline: 2px solid var(--accent); outline-offset: 14px; box-shadow: 0 50px 90px -40px rgba(0,34,72,.55); }
+  .photo .credit { left: 20px; bottom: 20px; }
+  /* jajaran mitra: panel vertikal berlabel, dibingkai garis tipis */
+  .lineup { position: relative; display: flex; gap: 10px; border-radius: 26px; outline: 2px solid var(--accent); outline-offset: 12px; }
+  .lineup .strip { flex: 1; position: relative; border-radius: 18px; overflow: hidden; background-size: cover; }
+  .lineup .strip::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,34,72,0) 45%, rgba(0,34,72,.85) 100%); }
+  .lineup .strip span { position: absolute; z-index: 1; left: 50%; bottom: 20px; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); color: #fff; font-size: 20px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; white-space: nowrap; }
+  .lineup .credit { right: 12px; top: 12px; font-size: 13px; }
+  .lineup.fill { flex: 1; min-height: 0; margin: 56px 16px 52px; box-shadow: 0 50px 90px -40px rgba(0,34,72,.5); }
+  /* bingkai di postingan rekrut (yang ditunjuk model) */
+  .frame-photo { position: absolute; z-index: 2; transform: rotate(-3deg); background: #fff; padding: 12px; border-radius: 28px; box-shadow: 0 40px 70px -30px rgba(0,20,45,.55); }
+  .frame-photo .lineup { height: 100%; gap: 8px; outline: 0; border-radius: 18px; }
+  .frame-photo .lineup .strip { border-radius: 12px; }
+  .frame-photo .lineup .strip span { font-size: 15px; letter-spacing: 2px; bottom: 14px; }
+  .frame-photo::before { content: ""; position: absolute; inset: -14px; border: 2px solid rgba(255,255,255,.9); border-radius: 36px; pointer-events: none; }
+  .frame-photo .lineup .credit { display: none; }
+  .frame-label { position: absolute; left: 24px; bottom: -24px; z-index: 2; background: var(--navy); color: #fff; font-size: 19px; font-weight: 700; letter-spacing: .5px; padding: 10px 18px; border-radius: 999px; box-shadow: 0 14px 30px -12px rgba(0,20,45,.6); }
+  .cutout { position: absolute; z-index: 0 !important; filter: drop-shadow(0 34px 40px rgba(0,10,30,.35)); pointer-events: none; }
+
+  /* lingkaran konsentris dekoratif untuk slide tanpa foto */
+  .rings { position: absolute; z-index: 0 !important; right: -260px; bottom: -260px; width: 900px; height: 900px; border-radius: 50%;
+    background: repeating-radial-gradient(circle, transparent 0 88px, var(--line) 88px 89.5px); opacity: .55;
+    -webkit-mask: radial-gradient(circle, #000 0 55%, transparent 70%); mask: radial-gradient(circle, #000 0 55%, transparent 70%); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const WA = "0856-0134-3247";
+const HANDLE = "@bantuinajaofficial";
+
+const header = (count) => `<div class="top"><div class="brand">bantuinaja.id <span class="tag">JOGJA</span></div>${count ? `<div class="count">${count}</div>` : ""}</div>`;
+const foot = (left, right) => `<div class="foot"><span>${left}</span>${right ? `<span class="swipe">${right}</span>` : ""}</div>`;
+
+// Setiap postingan: id, theme, slides[] (HTML isi slide)
+const POSTS = [
+  { id: "s01", theme: "blue", slides: [
+    `<div class="top"><span class="kicker" style="margin:0">Halo, Jogja!</span></div>
+     <div class="logo-big">bantuinaja<span>.id</span></div>
+     <h1 class="md">Urusan harian numpuk? <mark>Satu chat, beres.</mark></h1>
+     <p class="sub">Jasa bantuan harian untuk anak kos, keluarga & warga Jogja — dikerjakan mitra lokal yang identitasnya sudah diverifikasi.</p>
+     <div class="pills"><span class="pill">Pindahan & angkut</span><span class="pill">Bersih & cuci AC</span><span class="pill">Jastip pasar</span><span class="pill">Cuci & setrika</span><span class="pill">Data entry & servis laptop</span><span class="pill">Sinoman hajatan</span></div>
+     <div class="spacer"></div>${foot("Tarif mulai Rp30.000", "WA " + WA)}`
+  ]},
+
+  { id: "s07", theme: "blue", slides: [
+    `${header("1/7")}<span class="kicker">Checklist pindahan kos</span>
+     <h1>Pindahan kos minggu depan? <mark>Beresin 5 hal ini dulu.</mark></h1>
+     <p class="sub">Urut dari H-7 sampai hari H. Simpan biar nggak kelewat.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("2/7")}<div class="bignum">H-7</div><h2>Pilah barang jadi 3: bawa, jual, buang.</h2>
+     <p class="body">Yang nggak kamu pakai setahun terakhir, kemungkinan besar nggak akan dipakai di kos baru. Makin sedikit barang, makin cepat angkutnya.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("3/7")}<div class="bignum">H-5</div><h2>Kumpulkan kardus, lakban & plastik besar.</h2>
+     <p class="body">Coba minta kardus bekas ke warung atau toko dekat kos. Tulis isi + nama ruangan di sisi kardus, bukan di atasnya.</p>
+     <div class="tip">Kenapa di sisi? Kardus yang ditumpuk tetap kebaca.</div>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("4/7")}<div class="bignum">H-3</div><h2>Foto dulu sebelum membongkar.</h2>
+     <p class="body">Posisi kabel di belakang meja, rakitan lemari, susunan rak. Pasang lagi di kos baru tinggal lihat galeri, nggak perlu nebak.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("5/7")}<div class="bignum">H-1</div><h2>Cek akses kos baru.</h2>
+     <p class="body">Kamar di lantai berapa? Tangganya sempit? Mobil bisa masuk gang atau harus parkir di depan?</p>
+     <div class="tip">Info ini yang bikin estimasi tenaga & armada akurat. Kasih tahu saat pesan jasa angkut.</div>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("6/7")}<div class="bignum">Hari H</div><h2>Siapkan satu tas yang ikut kamu, bukan ikut truk.</h2>
+     <ul class="checks"><li>Charger & laptop</li><li>Dokumen penting & KTM</li><li>Obat & perlengkapan mandi</li><li>Satu set baju ganti</li></ul>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("7/7")}<span class="kicker">Butuh tenaga angkut?</span>
+     <h1 class="md">Kasur, lemari, kardus — <mark>biar mitra kami yang angkat.</mark></h1>
+     <div class="rows"><div class="row"><div class="n">Pindahan kos Paket Hemat<small>Armada + tenaga angkut</small></div><div class="p">mulai<br>Rp350.000</div></div></div>
+     <p class="note">Rincian final dikonfirmasi admin sebelum mitra berangkat.</p>
+     <div class="wa"><span class="l">CHAT ADMIN</span><span class="v">WA ${WA}</span></div>
+     <div class="spacer"></div>${foot("Simpan postingan ini untuk H-7 nanti")}`
+  ]},
+
+  { id: "s09", theme: "blue", slides: [
+    `${header()}<span class="kicker">Prinsip kami</span>
+     <h1 class="md">Harga ditulis <mark>sebelum</mark> mitra berangkat. Bukan dihitung di lokasi.</h1>
+     <div class="compare">
+       <div class="bubble no"><b>YANG KAMI HINDARI</b><span>"Nanti dihitung di tempat ya, Kak."</span></div>
+       <div class="bubble yes"><b>YANG KAMU TERIMA</b>Rincian tarif, jarak & biaya tambahan tertulis di chat. Kamu setuju dulu, baru mitra jalan.</div>
+     </div>
+     <div class="spacer"></div>${foot("Batal gratis selama mitra belum berangkat")}`
+  ]},
+
+  { id: "s08", theme: "white", slides: [
+    `${header("1/7")}<span class="kicker">Daftar tarif</span>
+     <h1>Berapa sih biayanya? <mark>Ini tarif resminya.</mark></h1>
+     <p class="sub">Layanan yang paling sering dipesan, lengkap dengan angkanya. Simpan biar nggak perlu nanya ulang.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("2/7")}<span class="kicker">Pindahan & angkut</span><h2>Untuk pindahan kos & barang berat</h2>
+     <div class="rows">
+       <div class="row"><div class="n">Pindahan kos Paket Hemat</div><div class="p">mulai Rp350.000</div></div>
+       <div class="row"><div class="n">Armada pickup saja<small>sudah dengan driver</small></div><div class="p">Rp200.000</div></div>
+       <div class="row"><div class="n">Tambahan helper angkut<small>standar 2 orang</small></div><div class="p">Rp55.000<small>/jam/orang</small></div></div>
+     </div><div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("3/7")}<span class="kicker">Kebersihan</span><h2>Kamar kinclong, AC dingin lagi</h2>
+     <div class="rows">
+       <div class="row"><div class="n">Deep clean kamar</div><div class="p">Rp150.000</div></div>
+       <div class="row"><div class="n">Cuci AC</div><div class="p">Rp85.000<small>/unit</small></div></div>
+     </div><div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("4/7")}<span class="kicker">Urusan harian</span><h2>Belanja & cucian</h2>
+     <div class="rows">
+       <div class="row"><div class="n">Jastip pasar & kuliner</div><div class="p">Rp30.000<small>+ Rp5.000/item</small></div></div>
+       <div class="row"><div class="n">Cuci & setrika</div><div class="p">Rp10.000<small>/kg · min 3 kg</small></div></div>
+     </div><div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("5/7")}<span class="kicker">Per jam & digital</span><h2>Bantuan yang dihitung per waktu atau per satuan</h2>
+     <div class="rows">
+       <div class="row"><div class="n">Jaga stand / booth<small>min 4 jam</small></div><div class="p">Rp25.000<small>/jam</small></div></div>
+       <div class="row"><div class="n">Antre & urus berkas RS<small>min 1 jam</small></div><div class="p">Rp45.000<small>/jam</small></div></div>
+       <div class="row"><div class="n">Input data Excel</div><div class="p">Rp7.500<small>/100 baris</small></div></div>
+     </div><div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("6/7")}<span class="kicker">Biaya tambahan</span><h2>Yang bisa menambah biaya — semuanya ditulis di depan</h2>
+     <div class="rows">
+       <div class="row"><div class="n">Jarak 0–5 km</div><div class="p">Gratis</div></div>
+       <div class="row"><div class="n">Jarak di atas 5 km</div><div class="p">ada tambahan</div></div>
+       <div class="row"><div class="n">Malam (21.00–06.00), Minggu & libur</div><div class="p">ada tambahan</div></div>
+     </div>
+     <p class="note">Nominal persisnya muncul di rincian admin sebelum mitra berangkat.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("7/7")}<span class="kicker">Hitung sendiri</span>
+     <h1 class="md">Mau tahu angka pasti tugasmu? <mark>Pakai kalkulator tarif.</mark></h1>
+     <p class="sub">Pilih layanan, jarak & waktu — estimasi langsung keluar. Link ada di bio.</p>
+     <div class="wa"><span class="l">ATAU TANYA ADMIN</span><span class="v">WA ${WA}</span></div>
+     <div class="spacer"></div>${foot("Tarif per November 2026 · dapat berubah")}`
+  ]},
+
+  { id: "s11", theme: "blue", slides: [
+    `${header()}<span class="kicker">Jastip pasar</span>
+     <h1 class="md">Pasar paling segar waktu subuh. <mark>Kamu tetap bisa tidur.</mark></h1>
+     <p class="sub">Kirim daftar belanja untuk Beringharjo, Kranggan, atau pasar dekat rumah. Mitra kami yang antre & pilihkan, struk asli difoto.</p>
+     <div class="tag-price"><div class="l">JASA TITIP</div><div class="v">Rp30.000 + Rp5.000/item</div></div>
+     <div class="spacer"></div>${foot("Pesan lewat WA " + WA)}`
+  ]},
+
+  { id: "s05", theme: "blue", slides: [
+    `${header("1/6")}<span class="kicker">Cara pesan</span>
+     <h1>Minta bantuan cuma <mark>4 langkah.</mark></h1>
+     <p class="sub">Dari chat pertama sampai tugas beres, ini yang terjadi.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("2/6")}<div class="bignum">01</div><h2>Pilih layanan, ceritakan tugasnya.</h2>
+     <p class="body">Lewat formulir di link bio atau langsung chat WA. Tulis lokasi, waktu & detailnya — makin jelas, makin cepat.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("3/6")}<div class="bignum">02</div><h2>Admin kirim rincian biaya.</h2>
+     <p class="body">Semua komponen tertulis. Setelah kamu setuju, admin mencarikan mitra terdekat.</p>
+     <div class="tip">Batal masih gratis selama mitra belum berangkat.</div>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("4/6")}<div class="bignum">03</div><h2>Mitra datang & kerja sesuai SOP.</h2>
+     <p class="body">Mitra yang identitasnya sudah diverifikasi datang tepat waktu dan mengerjakan sesuai instruksimu.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("5/6")}<div class="bignum">04</div><h2>Terima laporan foto, lalu bayar.</h2>
+     <p class="body">Cek hasilnya, baru bayar.</p>
+     <div class="pills"><span class="pill">QRIS</span><span class="pill">Transfer bank</span><span class="pill">Tunai setelah selesai</span></div>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("6/6")}<span class="kicker">Siap dibantu?</span>
+     <h1 class="md">Ceritakan tugasmu, <mark>admin bantu hitung.</mark></h1>
+     <div class="wa"><span class="l">CHAT ADMIN</span><span class="v">WA ${WA}</span></div>
+     <div class="spacer"></div>${foot("Formulir pemesanan ada di link bio")}`
+  ]},
+
+  { id: "s10", theme: "white", slides: [
+    `${header()}<span class="kicker">Mitra kami</span>
+     <h1 class="md">Yang datang ke kosmu <mark>identitasnya sudah kami cek.</mark></h1>
+     <ul class="checks"><li>e-KTP diverifikasi</li><li>KK atau KTM dicatat</li><li>Ada kontak darurat keluarga</li><li>Tanda tangan pakta integritas</li></ul>
+     <div class="spacer"></div>${foot("Kurang cocok? Admin siapkan mitra pengganti")}`
+  ]},
+
+  { id: "x-sinoman", theme: "white", slides: [
+    `${header()}<span class="kicker">Hajatan</span>
+     <h1 class="md">Cari sinoman sekarang susah. <mark>Pemudanya banyak yang merantau.</mark></h1>
+     <p class="sub">Tim muda yang sopan & paham unggah-ungguh: laden tamu, piring terbang, sampai cuci piring setelah acara.</p>
+     <div class="rows"><div class="row"><div class="n">Cuci piring & dapur pasca acara<small>min 3 jam · min 2 orang</small></div><div class="p">Rp45.000<small>/jam/orang</small></div></div></div>
+     <div class="spacer"></div>${foot("Konsultasi jumlah tim: WA " + WA)}`
+  ]},
+
+  { id: "s06", theme: "white", slides: [
+    `${header()}<span class="kicker">Dicari: mitra freelance</span>
+     <h1 class="md">Jadwal kuliah bolong-bolong? <mark>Isi dengan kerja yang jelas bayarannya.</mark></h1>
+     <p class="sub">Terbuka untuk mahasiswa & warga se-DIY.</p>
+     <ul class="checks"><li>Ambil tugas sesuai waktumu</li><li>Bagi hasil 60% dari nilai jasa</li><li>Daftar gratis, tanpa deposit</li></ul>
+     <div class="spacer"></div>${foot("Daftar lewat link di bio")}`
+  ]},
+];
+
+// --- Postingan baru sesuai struktur 9 konten awal ---
+POSTS.push(
+  { id: "s04", theme: "white", slides: [
+    `${header()}<span class="kicker">Layanan unggulan</span>
+     <h1 class="md">Pindahan kos <mark>tanpa nunggu teman nganggur.</mark></h1>
+     <ul class="checks"><li>Armada pickup/mobil + tenaga angkut</li><li>Angkat kasur, lemari & kardus</li><li>Naik-turun tangga kos</li><li>Bantu tata ulang di kamar baru</li></ul>
+     <div class="tag-price"><div class="l">PAKET HEMAT</div><div class="v">mulai Rp350.000</div></div>
+     <div class="spacer"></div>${foot("Chat WA " + WA)}`
+  ]},
+
+  { id: "s02", theme: "white", slides: [
+    `${header()}<span class="kicker">Masalah → jawaban</span>
+     <h2>Tiga keluhan yang paling sering kami dengar:</h2>
+     <div class="ps">
+       <div class="item"><div class="q">"Nggak punya kendaraan buat angkut lemari."</div><div class="a">Pickup + tenaga angkut datang bareng.</div></div>
+       <div class="item"><div class="q">"Takut harganya dihitung di tempat."</div><div class="a">Rincian biaya ditulis sebelum mitra berangkat.</div></div>
+       <div class="item"><div class="q">"Ragu orang asing masuk kos."</div><div class="a">Mitra diverifikasi e-KTP & menandatangani pakta integritas.</div></div>
+     </div>
+     <div class="spacer"></div>${foot(HANDLE)}`
+  ]},
+
+  { id: "s13", theme: "blue", slides: [
+    `${header()}<span class="kicker">Kata pelanggan</span>
+     <div class="quote-mark">“</div>
+     <p class="quote">Barang banyak, nggak ada teman cowok yang bisa bantu angkat lemari. Datang 2 helper, ramah, sopan, dan <mark>langsung rapi dalam 2 jam.</mark></p>
+     <div class="who"><div class="avatar">AL</div><div><b>Annisa L.</b>Mahasiswi · pindahan ke Jakal</div></div>
+     <div class="spacer"></div>${foot(HANDLE)}`
+  ]},
+
+  { id: "s03", theme: "blue", slides: [
+    `${header()}<span class="kicker">Promo pembukaan</span>
+     <div class="promo-big">10%</div>
+     <h2>potongan untuk pesanan pertamamu.</h2>
+     <p class="sub">Berlaku untuk semua layanan sampai 30 November 2026.</p>
+     <div class="promo-code">Sebut kode <b>HALOJOGJA</b> saat chat admin</div>
+     <div class="wa"><span class="l">PESAN SEKARANG</span><span class="v">WA ${WA}</span></div>
+     <div class="spacer"></div>${foot("atau isi formulir di link bio")}`
+  ]},
+);
+POSTS.push(
+  { id: "s12", theme: "white", slides: [
+    `${header("1/6")}<span class="kicker">Daftar mitra freelance</span>
+     <h1>Mau jadi mitra bantuinaja.id? <mark>Ini 4 langkahnya.</mark></h1>
+     <p class="sub">Gratis daftar. Belum punya pengalaman juga boleh.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("2/6")}<div class="bignum">01</div><h2>Isi formulir pendaftaran.</h2>
+     <p class="body">Data diri, nomor WhatsApp aktif, wilayah domisili di DIY, dan jenis tugas yang kamu minati.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("3/6")}<div class="bignum">02</div><h2>Dapat ID mitra.</h2>
+     <p class="body">Sistem membuatkan ID registrasi resmi dan menyusun draf pesan WhatsApp untuk admin.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("4/6")}<div class="bignum">03</div><h2>Verifikasi identitas.</h2>
+     <p class="body">Kirim foto e-KTP atau KTM asli dan kontak darurat ke WhatsApp admin.</p>
+     <div class="tip">Ini demi keamanan pelanggan — dan keamananmu juga.</div>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("5/6")}<div class="bignum">04</div><h2>Briefing, lalu ambil order.</h2>
+     <p class="body">Setelah briefing SOP, kamu masuk grup tugas harian dan bisa mengambil order saat senggang.</p>
+     <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+    `${header("6/6")}<span class="kicker">Penting</span>
+     <h1 class="md">Daftar mitra <mark>100% gratis.</mark></h1>
+     <p class="sub">Kami tidak pernah meminta biaya daftar, uang seragam, atau deposit. Ada yang minta atas nama bantuinaja.id? Itu penipuan.</p>
+     <div class="wa"><span class="l">DAFTAR SEKARANG</span><span class="v">Link di bio</span></div>
+     <div class="spacer"></div>${foot("Terbuka untuk mahasiswa & warga se-DIY")}`
+  ]},
+);
+
+// --- Loker mitra freelance (6 posisi dari 6 layanan utama) ---
+const JOBS = [
+  ["Helper Angkut & Pindahan", "Angkat kasur, lemari & kardus, tata ulang kamar.", "Fisik prima, siap kerja tim. Punya SIM A = bisa jadi sopir pickup."],
+  ["Kebersihan & Cuci AC", "Deep clean kamar/rumah, cuci AC ringan.", "Teliti & rapi. Paham servis ringan AC jadi nilai plus."],
+  ["Runner Jastip & Pasar", "Belanja pasar pagi, jastip kuliner & oleh-oleh.", "Motor + SIM C aktif, siap pagi, jujur kelola uang titipan."],
+  ["Asisten Digital", "Input Excel, olah dokumen, instal software & servis ringan laptop.", "Lancar Excel/Office, teliti, bisa kerja dari kos."],
+  ["Cuci & Setrika", "Laundry harian anak kos & keluarga muda.", "Telaten, rapi, paham perawatan bahan pakaian."],
+  ["Teman Jalan (Strict Platonic)", "Teman diskusi, partner olahraga, pendamping acara publik.", "Komunikatif & sopan. 100% di ruang publik, tanpa kontak fisik."],
+];
+POSTS.push({ id: "y-loker", theme: "blue", slides: [
+  `${header()}<span class="kicker">Lowongan mitra freelance · Jogja</span>
+   <h1>Jam kosong di sela kuliah? <mark>Ubah jadi penghasilan.</mark></h1>
+   <div class="perks"><span><b>60%</b> bagi hasil</span><span>Cair <b>2–3 hari</b> kerja</span><span>Daftar <b>gratis</b></span><span>Pilih <b>waktumu</b> sendiri</span></div>
+   <div class="jobs">${JOBS.map(([t, d, q], i) => `<div class="job"><div class="h"><span class="no">0${i + 1}</span><span class="t">${t}</span></div><div class="d">${d}</div><div class="q">${q}</div></div>`).join("")}</div>
+   <p class="umum"><b>Syarat umum:</b> domisili DIY · e-KTP/KTM asli · WhatsApp aktif · kontak darurat keluarga · setuju kode etik. Belum berpengalaman? Ada briefing sebelum tugas pertama.</p>
+   <div class="cta"><div class="wa"><span class="l">DAFTAR</span><span class="v">Link di bio</span></div><div class="note2">Kami tidak pernah minta<br>biaya daftar atau deposit.</div></div>
+   <div class="spacer"></div>`
+]});
+POSTS.sort((a, b) => a.id.localeCompare(b.id));
+
+// Foto b-roll (Pixabay Content License) di slide pertama — lihat broll/SUMBER-FOTO.md
+// layout: full = foto penuh + gradasi navy · top = foto di atas (latar putih) · fill = foto berbingkai · cutout = PNG transparan
+const PHOTOS = {
+  s01: { src: "broll/jogja-bapak-sepeda-4840265.jpg", pos: "62% 22%", layout: "full" },
+  s03: { src: "broll/hijab-hp-senang-10505417.png", cutout: "top: 110px; right: -40px; width: 620px;" },
+  s04: { src: "broll/kardus-2484376.png", cutout: "right: 30px; bottom: 150px; width: 380px;" },
+  s05: { src: "broll/tangan-hp-7304257.jpg", pos: "62% 50%", layout: "full" },
+  s06: { src: "broll/hijab-menunjuk-7084058.jpg", pos: "76% 22%", layout: "top",
+         // yang ditunjuk model: jajaran mitra dengan pakaian sesuai tugasnya
+         frame: { lineup: ["angkut", "teknisi", "pasar", "admin"], label: "Pilih tugas sesuai keahlianmu",
+                  css: "left: 80px; top: 186px; width: 470px; height: 350px;" } },
+  s07: { src: "broll/kardus-kunci-2481718.jpg", pos: "45% 40%", layout: "full" },
+  s10: { src: "broll/pemuda-lanyard-7524866.jpg", pos: "50% 32%", layout: "top" },
+  s11: { src: "broll/pasar-hijab-7062598.jpg", pos: "50% 28%", layout: "full" },
+  s12: { layout: "lineup", lineup: ["angkut", "teknisi", "pasar", "dapur", "admin"] },
+  "x-sinoman": { src: "broll/hajatan-jawa-1737184.jpg", pos: "72% 30%", layout: "top" },
+};
+
+// Jajaran mitra (Pixabay) — tiap orang tampil dengan pakaian/konteks kerjanya
+const LINEUP = {
+  angkut:  { src: "broll/pemuda-angkut-5831655.jpg", pos: "36% 45%", label: "Helper Angkut" },
+  teknisi: { src: "broll/teknisi-helm-2504228.jpg", pos: "56% 30%", label: "Teknisi" },
+  pasar:   { src: "broll/pasar-hijab-7062598.jpg", pos: "60% 40%", label: "Jastip Pasar" },
+  dapur:   { src: "broll/ibu-masak-377181.jpg", pos: "70% 40%", label: "Dapur Hajatan" },
+  admin:   { src: "broll/hijab-hp-senang-10505417.png", pos: "50% 18%", label: "Admin Digital", bg: "#DCEAF6" },
+};
+const lineup = (keys) => {
+  const l = div("lineup");
+  for (const k of keys) {
+    const p = LINEUP[k], st = div("strip", `background-image:url(${p.src});background-position:${p.pos};background-color:${p.bg || "#0B2A4A"}`);
+    const t = document.createElement("span"); t.textContent = p.label; st.appendChild(t);
+    l.appendChild(st);
+  }
+  l.appendChild(credit());
+  return l;
+};
+
+const div = (cls, style) => { const d = document.createElement("div"); d.className = cls; if (style) d.style.cssText = style; return d; };
+const credit = () => { const c = document.createElement("span"); c.className = "credit"; c.textContent = "Foto ilustrasi"; return c; };
+
+const root = document.getElementById("root");
+root.style.cssText = "display:flex;flex-direction:column;gap:40px";
+for (const post of POSTS) {
+  post.slides.forEach((html, i) => {
+    const el = document.createElement("section");
+    el.className = `slide ${post.theme}`;
+    el.id = post.slides.length > 1 ? `${post.id}-${i + 1}` : post.id;
+    el.innerHTML = html;
+    if (post.id === "y-loker") el.classList.add("loker");
+    const photo = i === 0 && PHOTOS[post.id];
+    const bg = (p) => `background-image:url(${p.src});background-position:${p.pos || "center"}`;
+    if (photo && photo.cutout) {
+      const img = document.createElement("img");
+      img.className = "cutout"; img.src = photo.src; img.style.cssText = photo.cutout;
+      el.prepend(img);
+    } else if (photo && photo.layout === "full") {
+      // teks turun ke bawah, foto terlihat di bagian atas
+      el.classList.add("full");
+      el.prepend(div("bg-shade"));
+      el.prepend(div("bg-photo", bg(photo)));
+      const top = el.querySelector(".top"), sp = el.querySelector(".spacer");
+      if (top && sp) top.after(sp);
+      el.appendChild(credit());
+    } else if (photo && photo.layout === "top") {
+      el.classList.add("photo-top");
+      el.prepend(div("hero-photo", bg(photo)));
+      el.appendChild(credit());
+      if (photo.frame) {
+        const f = div("frame-photo", photo.frame.css);
+        f.appendChild(lineup(photo.frame.lineup));
+        if (photo.frame.label) { const l = document.createElement("span"); l.className = "frame-label"; l.textContent = photo.frame.label; f.appendChild(l); }
+        el.appendChild(f);
+      }
+    } else if (photo && photo.layout === "lineup") {
+      const l = lineup(photo.lineup); l.classList.add("fill");
+      el.querySelector(".spacer").replaceWith(l);
+    } else if (photo) {
+      const ph = div("photo", bg(photo));
+      ph.appendChild(credit());
+      el.querySelector(".spacer").replaceWith(ph);
+    } else {
+      // slide tanpa foto: isi diletakkan di tengah vertikal (spacer atas + bawah)
+      const top = el.querySelector(".top");
+      if (top) top.after(div("spacer"));
+      if (i === 0 || el.querySelector(".bignum")) el.prepend(div("rings"));
+    }
+    root.appendChild(el);
+  });
+}
+</script>
+</body>
+</html>
