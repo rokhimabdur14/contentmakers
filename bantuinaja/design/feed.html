@@ -146,7 +146,8 @@
   /* foto di bagian atas (latar putih) */
   .photo-top { padding-top: 600px; }
   .photo-top .hero-photo { position: absolute; top: 0; left: 0; right: 0; height: 640px; z-index: 0; background-size: cover; }
-  .photo-top .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,20,45,.5) 0%, rgba(0,20,45,0) 26%, rgba(255,255,255,0) 62%, #fff 100%); }
+  .photo-top .hero-photo { -webkit-mask: linear-gradient(180deg, #000 58%, transparent 100%); mask: linear-gradient(180deg, #000 58%, transparent 100%); }
+  .photo-top .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,20,45,.72) 0%, rgba(0,20,45,.35) 16%, rgba(0,20,45,0) 32%); }
   .photo-top .top { position: absolute; top: 80px; left: 88px; right: 88px; margin: 0; --fg: #fff; --muted: rgba(255,255,255,.85); --line: rgba(255,255,255,.4); --accent: #fff; color: #fff; }
   .photo-top .credit { top: 140px; right: 88px; }
   .photo-top h1 { font-size: 74px; }
@@ -156,6 +157,12 @@
   .photo-top .checks { margin-top: 30px; gap: 14px; }
   .photo-top .checks li { font-size: 30px; }
   .photo-top .rows { margin-top: 30px; }
+  .photo-top .bignum { font-size: 160px; margin-bottom: 26px; }
+  .photo-top .body { font-size: 32px; margin-top: 20px; }
+  .photo-top .tip { margin-top: 28px; font-size: 26px; padding: 20px 26px; }
+  .photo-top .earn { margin-top: 26px; padding: 16px 30px; }
+  .photo-top .earn .v { font-size: 46px; }
+  .photo-top .wa { margin-top: 34px; }
   /* foto berbingkai garis tipis (sampul carousel putih) */
   .photo { flex: 1; min-height: 0; margin: 56px 16px 52px; border-radius: 28px; background-size: cover; outline: 2px solid var(--accent); outline-offset: 14px; box-shadow: 0 50px 90px -40px rgba(0,34,72,.55); }
   .photo .credit { left: 20px; bottom: 20px; }
@@ -495,6 +502,52 @@ const lineup = (keys) => {
   return l;
 };
 
+
+// Foto untuk slide isi carousel & postingan tunggal yang belum punya foto (layout foto di atas).
+// h = tinggi foto (px); bg = warna latar untuk PNG transparan. Sumber: broll/SUMBER-FOTO.md
+const SLIDE_PHOTOS = {
+  // 02 Masalah & solusi, 09 Harga jelas, 13 Testimoni (tanpa wajah), 08 sampul katalog
+  "s02": { src: "broll/kardus-lakban-3883980.jpg", pos: "50% 55%", h: 420 },
+  "s09": { src: "broll/nota-kalkulator-761599.jpg", pos: "50% 40%", h: 420 },
+  "s13": { src: "broll/kardus-kunci-2481718.jpg", pos: "45% 40%", h: 440 },
+  "s08-1": { src: "broll/kalkulator-385506.jpg", pos: "50% 50%", h: 520 },
+  // 05 Cara pesan
+  "s05-2": { src: "broll/hp-di-tangan-410311.jpg", pos: "45% 45%" },
+  "s05-3": { src: "broll/nota-kalkulator-761599.jpg", pos: "50% 40%" },
+  "s05-4": { src: "broll/pemuda-angkut-5831655.jpg", pos: "36% 40%" },
+  "s05-5": { src: "broll/bayar-qr-5417252.jpg", pos: "50% 45%" },
+  "s05-6": { src: "broll/hijab-hp-senang-10505417.png", pos: "50% 20%", bg: "#DCEAF6" },
+  // 07 Tips pindahan
+  "s07-2": { src: "broll/web/web-laundry.jpg", pos: "50% 50%" },
+  "s07-3": { src: "broll/kardus-lakban-3883980.jpg", pos: "50% 55%" },
+  "s07-4": { src: "broll/meja-kerja-5517762.jpg", pos: "50% 50%" },
+  "s07-5": { src: "broll/tangga-sempit-7143249.jpg", pos: "50% 55%" },
+  "s07-6": { src: "broll/tas-perlengkapan-405880.jpg", pos: "50% 50%" },
+  "s07-7": { src: "broll/pemuda-angkut-5831655.jpg", pos: "36% 40%" },
+  // 08 Katalog harga
+  "s08-2": { src: "broll/web/web-pindahan.jpg", pos: "50% 60%" },
+  "s08-3": { src: "broll/web/web-bersih.jpg", pos: "45% 30%" },
+  "s08-4": { src: "broll/web/web-pasar.jpg", pos: "50% 50%" },
+  "s08-5": { src: "broll/web/web-digital.jpg", pos: "50% 40%" },
+  "s08-6": { src: "broll/motor-malam-6682922.jpg", pos: "50% 55%" },
+  "s08-7": { src: "broll/kalkulator-kertas-1238598.jpg", pos: "50% 50%" },
+  // 12 Cara jadi mitra
+  "s12-2": { src: "broll/hp-di-tangan-410311.jpg", pos: "45% 45%" },
+  "s12-3": { src: "broll/kartu-id-3664447.jpg", pos: "50% 50%" },
+  "s12-4": { src: "broll/pemuda-lanyard-7524866.jpg", pos: "50% 30%" },
+  "s12-5": { src: "broll/web/web-digital.jpg", pos: "50% 40%" },
+  "s12-6": { src: "broll/hijab-menunjuk-7084058.jpg", pos: "76% 22%" },
+  // Loker (posisi 01–06, keuntungan, daftar)
+  "y-loker-2": { src: "broll/pemuda-angkut-5831655.jpg", pos: "36% 40%" },
+  "y-loker-3": { src: "broll/web/web-bersih.jpg", pos: "45% 30%" },
+  "y-loker-4": { src: "broll/pasar-hijab-7062598.jpg", pos: "50% 30%" },
+  "y-loker-5": { src: "broll/hijab-hp-senang-10505417.png", pos: "50% 20%", bg: "#DCEAF6" },
+  "y-loker-6": { src: "broll/web/web-laundry.jpg", pos: "50% 50%" },
+  "y-loker-7": { src: "broll/web/web-companion.jpg", pos: "60% 60%" },
+  "y-loker-8": { src: "broll/teknisi-helm-2504228.jpg", pos: "56% 25%" },
+  "y-loker-9": { src: "broll/hijab-menunjuk-7084058.jpg", pos: "76% 22%" },
+};
+
 const div = (cls, style) => { const d = document.createElement("div"); d.className = cls; if (style) d.style.cssText = style; return d; };
 const credit = () => { const c = document.createElement("span"); c.className = "credit"; c.textContent = "Foto ilustrasi"; return c; };
 
@@ -507,7 +560,8 @@ for (const post of POSTS) {
     el.id = post.slides.length > 1 ? `${post.id}-${i + 1}` : post.id;
     el.innerHTML = html;
     if (post.id === "y-loker" && i > 0 && i < 7) el.className = "slide white";
-    const photo = i === 0 && PHOTOS[post.id];
+    const photo = (i === 0 && PHOTOS[post.id]) || SLIDE_PHOTOS[el.id] || null;
+    if (photo && !photo.layout && !photo.cutout && !photo.beside && !photo.inline && SLIDE_PHOTOS[el.id]) { photo.layout = "top"; photo.h = photo.h || 500; }
     const bg = (p) => `background-image:url(${p.src});background-position:${p.pos || "center"}`;
     const topEl = el.querySelector(".top");
     if (photo && photo.beside) {
@@ -535,7 +589,9 @@ for (const post of POSTS) {
       el.appendChild(credit());
     } else if (photo && photo.layout === "top") {
       el.classList.add("photo-top");
-      el.prepend(div("hero-photo", bg(photo)));
+      const hero = div("hero-photo", bg(photo) + (photo.bg ? `;background-color:${photo.bg}` : ""));
+      if (photo.h) { hero.style.height = photo.h + "px"; el.style.paddingTop = (photo.h - 30) + "px"; }
+      el.prepend(hero);
       el.appendChild(credit());
       if (topEl) topEl.after(div("spacer"));
       if (photo.frame) {

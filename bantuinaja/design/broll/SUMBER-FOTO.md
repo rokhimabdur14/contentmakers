@@ -24,7 +24,24 @@ Foto dipilih dari kata kunci *indonesia / indonesian / yogyakarta / javanese* da
 | `pasar-hijab-7062598.jpg` | 7062598 | Ibu berhijab di pasar tradisional | 11 Jastip Pasar; panel "Jastip Pasar" di 06 & 12 |
 | `hajatan-jawa-1737184.jpg` | 1737184 | Pernikahan adat Jawa | Cadangan Sinoman |
 
-Postingan tanpa foto: 02 Masalah & Solusi, 08 Katalog Harga, 09 Harga Jelas, 13 Testimoni (sengaja tanpa wajah agar tidak dikira foto pelanggan asli).
+## Foto benda/suasana untuk slide isi carousel (Pixabay)
+Sejak 27 Okt 2026 setiap slide punya foto. Postingan Testimoni sengaja memakai foto benda (kardus + kunci), bukan wajah, agar tidak dikira foto pelanggan asli.
+
+| File | Pixabay ID | Isi | Dipakai di |
+|---|---|---|---|
+| `kardus-lakban-3883980.jpg` | 3883980 | Kardus & lakban | 02 Masalah & Solusi; 07 slide H-5 |
+| `meja-kerja-5517762.jpg` | 5517762 | Meja kerja & laptop | 07 slide H-3 |
+| `tangga-sempit-7143249.jpg` | 7143249 | Tangga gang sempit | 07 slide H-1 |
+| `tas-perlengkapan-405880.jpg` | 405880 | Tas & perlengkapan | 07 slide Hari H |
+| `nota-kalkulator-761599.jpg` | 761599 | Nota & kalkulator | 09 Harga Jelas; 05 slide 3 |
+| `bayar-qr-5417252.jpg` | 5417252 | Bayar pakai kode QR | 05 slide 5 |
+| `kalkulator-385506.jpg` | 385506 | Kalkulator | 08 sampul |
+| `kalkulator-kertas-1238598.jpg` | 1238598 | Kalkulator & kertas | 08 slide 7 |
+| `motor-malam-6682922.jpg` | 6682922 | Skuter di jalan | 08 slide 6 (biaya tambahan) |
+| `kartu-id-3664447.jpg` | 3664447 | Kartu ID / name tag | 12 slide 3 |
+| `hp-di-tangan-410311.jpg` | 410311 | HP di tangan | 05 slide 2; 12 slide 2 |
+
+Slide lain memakai ulang foto yang sudah ada di tabel atas (termasuk foto layanan dari website di folder `web/`).
 
 ## Foto dari website bantuinaja (folder `web/`)
 Postingan **01 Perkenalan** memakai mozaik 6 foto layanan yang sama persis dengan yang dipasang di website bantuin-amber.vercel.app. Foto-foto ini berasal dari **Unsplash** (lisensi Unsplash: bebas pakai komersial, tanpa wajib atribusi). Catatan: orang di foto-foto ini bukan orang Indonesia — dipakai karena diminta menyamakan dengan website.
