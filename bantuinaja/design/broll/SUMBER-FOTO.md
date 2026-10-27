@@ -54,3 +54,14 @@ Postingan **01 Perkenalan** memakai mozaik 6 foto layanan yang sama persis denga
 | `web/web-pasar.jpg` | 1542838132-92c53300491e | Jastip & Pasar |
 | `web/web-digital.jpg` | 1522202176988-66273c2fd55f | Tugas Digital |
 | `web/web-laundry.jpg` | 1517677208171-0bc6725a3e60 | Cuci & Setrika |
+
+## Tokoh tanpa latar (folder `cutout/`)
+| File | Sumber | Keterangan |
+|---|---|---|
+| `hijab-hp.png`, `hijab-bayar.png`, `hijab-belanja.png`, `hijab-tunjuk-atas.png`, `hijab-presentasi.png`, `hijab-baju.png` | Pixabay (PNG transparan, model yang sama, diunggah 3 Okt 2026) | Perempuan berhijab dengan pose berbeda |
+| `hijab-menunjuk.png` | Pixabay 7084058 | Latar dihapus dengan rembg |
+| `pria-teknisi.png` | Pixabay 2504228 | Latar dihapus dengan rembg |
+| `pria-idcard.png` | Pixabay 7524866 | Latar dihapus dengan rembg |
+| `pria-angkut.png` | Pixabay 5831655 | Latar dihapus dengan rembg |
+
+Semua tokoh tetap **ilustrasi**, bukan mitra/pelanggan asli. Model berhijab yang sama dipakai di beberapa postingan — kalau nanti ada foto mitra asli, ganti di sini.
