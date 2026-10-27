@@ -110,6 +110,27 @@
   .earn .l { font-size: 16px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--tag-l); }
   .earn .v { font-size: 56px; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
   .earn .u { font-size: 21px; font-weight: 600; opacity: .75; }
+
+  /* ===== Komposisi rata tengah (horizontal + vertikal) ===== */
+  .slide { text-align: center; }
+  .slide .kicker { align-self: center; }
+  .slide .kicker::after { content: ""; width: 48px; height: 2px; background: currentColor; }
+  .slide h1, .slide h2 { max-width: 920px; margin-left: auto; margin-right: auto; }
+  .slide p.sub, .slide .body { margin-left: auto; margin-right: auto; max-width: 860px; }
+  .slide .pills { justify-content: center; }
+  .slide .checks { align-self: center; text-align: left; }
+  .slide .tag-price, .slide .wa, .slide .earn, .slide .promo-code { align-self: center; }
+  .slide .tip { border-left: 0; border-radius: 18px; text-align: center; }
+  .slide .rows, .slide .ps, .slide .compare { text-align: left; }
+  .slide .who { justify-content: center; text-align: left; }
+  .slide .bignum { margin-left: 0; margin-right: 0; }
+  .slide .promo-big { margin-left: 0; }
+  .slide .top:not(:has(.brand)) { justify-content: center; }
+  /* foto potongan di dalam alur desain */
+  .cutout.inline { position: relative; display: block; align-self: center; height: auto; margin-top: 34px; }
+  .beside { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .beside .promo-big { margin: 0; }
+  .beside img { position: relative; width: 300px; margin-right: -40px; filter: drop-shadow(0 34px 40px rgba(0,10,30,.35)); }
   /* foto b-roll */
   .credit { position: absolute; z-index: 3; font-size: 15px; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,.9); background: rgba(0,20,45,.45); padding: 6px 12px; border-radius: 999px; }
   /* foto penuh satu bidang (latar biru) */
@@ -117,6 +138,10 @@
   .full .bg-photo { position: absolute; inset: 0; z-index: 0; background-size: cover; }
   .full .bg-shade { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(0,34,72,.55) 0%, rgba(0,34,72,0) 20%, rgba(0,34,72,.15) 36%, rgba(0,34,72,.78) 56%, rgba(0,34,72,.96) 72%, var(--navy) 100%); }
   .full .credit { top: 150px; right: 88px; }
+  .full .bg-photo.mosaic { bottom: auto; height: 720px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 6px; background: var(--navy); }
+  .mosaic .tile { background-size: cover; background-position: center; }
+  /* gradasi khusus mozaik: atas sedikit gelap (label terbaca), memudar mulus ke navy sebelum teks */
+  .full:has(.mosaic) .bg-shade { background: linear-gradient(180deg, rgba(0,34,72,.6) 0%, rgba(0,34,72,.15) 14%, rgba(0,34,72,.2) 26%, rgba(0,34,72,.75) 40%, rgba(0,34,72,.97) 50%, var(--navy) 54%); }
   .full .top .kicker { color: #fff; }
   /* foto di bagian atas (latar putih) */
   .photo-top { padding-top: 600px; }
@@ -433,9 +458,11 @@ POSTS.sort((a, b) => a.id.localeCompare(b.id));
 // Foto b-roll (Pixabay Content License) di slide pertama — lihat broll/SUMBER-FOTO.md
 // layout: full = foto penuh + gradasi navy · top = foto di atas (latar putih) · fill = foto berbingkai · cutout = PNG transparan
 const PHOTOS = {
-  s01: { src: "broll/jogja-bapak-sepeda-4840265.jpg", pos: "62% 22%", layout: "full" },
-  s03: { src: "broll/hijab-hp-senang-10505417.png", cutout: "top: 110px; right: -40px; width: 620px;" },
-  s04: { src: "broll/kardus-2484376.png", cutout: "right: 30px; bottom: 150px; width: 380px;" },
+  // perkenalan: mozaik 6 foto layanan yang sama dengan website (Unsplash, dipakai di bantuin-amber.vercel.app)
+  s01: { layout: "full", mosaic: ["web/web-pindahan.jpg", "web/web-bersih.jpg", "web/web-companion.jpg",
+                                  "web/web-pasar.jpg", "web/web-digital.jpg", "web/web-laundry.jpg"] },
+  s03: { src: "broll/hijab-hp-senang-10505417.png", beside: ".promo-big" },
+  s04: { src: "broll/kardus-2484376.png", inline: "width: 360px;" },
   s05: { src: "broll/tangan-hp-7304257.jpg", pos: "62% 50%", layout: "full" },
   s06: { src: "broll/hijab-menunjuk-7084058.jpg", pos: "76% 22%", layout: "top",
          // yang ditunjuk model: jajaran mitra dengan pakaian sesuai tugasnya
@@ -482,15 +509,27 @@ for (const post of POSTS) {
     if (post.id === "y-loker" && i > 0 && i < 7) el.className = "slide white";
     const photo = i === 0 && PHOTOS[post.id];
     const bg = (p) => `background-image:url(${p.src});background-position:${p.pos || "center"}`;
-    if (photo && photo.cutout) {
+    const topEl = el.querySelector(".top");
+    if (photo && photo.beside) {
+      // foto potongan di samping elemen (mis. angka promo), satu baris dan rata tengah
+      const target = el.querySelector(photo.beside), row = div("beside"), img = document.createElement("img");
+      img.src = photo.src; target.replaceWith(row); row.append(target, img);
+      if (topEl) topEl.after(div("spacer"));
+    } else if (photo && photo.inline) {
+      // foto potongan di dalam alur, tepat sebelum footer
       const img = document.createElement("img");
-      img.className = "cutout"; img.src = photo.src; img.style.cssText = photo.cutout;
-      el.prepend(img);
+      img.className = "cutout inline"; img.src = photo.src; img.style.cssText = photo.inline;
+      el.querySelector(".spacer").before(img);
+      if (topEl) topEl.after(div("spacer"));
     } else if (photo && photo.layout === "full") {
       // teks turun ke bawah, foto terlihat di bagian atas
       el.classList.add("full");
       el.prepend(div("bg-shade"));
-      el.prepend(div("bg-photo", bg(photo)));
+      if (photo.mosaic) {
+        const m = div("bg-photo mosaic");
+        photo.mosaic.forEach(src => m.appendChild(div("tile", `background-image:url(broll/${src})`)));
+        el.prepend(m);
+      } else el.prepend(div("bg-photo", bg(photo)));
       const top = el.querySelector(".top"), sp = el.querySelector(".spacer");
       if (top && sp) top.after(sp);
       el.appendChild(credit());
@@ -498,6 +537,7 @@ for (const post of POSTS) {
       el.classList.add("photo-top");
       el.prepend(div("hero-photo", bg(photo)));
       el.appendChild(credit());
+      if (topEl) topEl.after(div("spacer"));
       if (photo.frame) {
         const f = div("frame-photo", photo.frame.css);
         f.appendChild(lineup(photo.frame.lineup));

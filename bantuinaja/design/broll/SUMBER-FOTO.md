@@ -12,7 +12,6 @@ Foto dipilih dari kata kunci *indonesia / indonesian / yogyakarta / javanese* da
 
 | File | Pixabay ID | Isi | Dipakai di |
 |---|---|---|---|
-| `jogja-bapak-sepeda-4840265.jpg` | 4840265 | Bapak berblangkon dengan sepeda, Yogyakarta | 01 Perkenalan |
 | `hijab-hp-senang-10505417.png` | 10505417 | Perempuan berhijab senang melihat HP (PNG transparan) | 03 Promo; panel "Admin Digital" di 06 & 12 |
 | `kardus-2484376.png` | 2484376 | Kardus (PNG transparan) | 04 Pindahan Kos |
 | `tangan-hp-7304257.jpg` | 7304257 | Tangan memegang HP | 05 Cara Pesan |
@@ -26,3 +25,15 @@ Foto dipilih dari kata kunci *indonesia / indonesian / yogyakarta / javanese* da
 | `hajatan-jawa-1737184.jpg` | 1737184 | Pernikahan adat Jawa | Cadangan Sinoman |
 
 Postingan tanpa foto: 02 Masalah & Solusi, 08 Katalog Harga, 09 Harga Jelas, 13 Testimoni (sengaja tanpa wajah agar tidak dikira foto pelanggan asli).
+
+## Foto dari website bantuinaja (folder `web/`)
+Postingan **01 Perkenalan** memakai mozaik 6 foto layanan yang sama persis dengan yang dipasang di website bantuin-amber.vercel.app. Foto-foto ini berasal dari **Unsplash** (lisensi Unsplash: bebas pakai komersial, tanpa wajib atribusi). Catatan: orang di foto-foto ini bukan orang Indonesia — dipakai karena diminta menyamakan dengan website.
+
+| File | Unsplash photo ID | Layanan di website |
+|---|---|---|
+| `web/web-pindahan.jpg` | 1600585152220-90363fe7e115 | Pindahan & Angkut |
+| `web/web-bersih.jpg` | 1581578731548-c64695cc6952 | Bersih & Servis AC |
+| `web/web-companion.jpg` | 1476480862126-209bfaa8edc8 | Companion Platonic |
+| `web/web-pasar.jpg` | 1542838132-92c53300491e | Jastip & Pasar |
+| `web/web-digital.jpg` | 1522202176988-66273c2fd55f | Tugas Digital |
+| `web/web-laundry.jpg` | 1517677208171-0bc6725a3e60 | Cuci & Setrika |
