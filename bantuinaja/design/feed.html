@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <title>bantuinaja.id — Feed Awal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   /* Gaya "Editorial elegan" — warna website (biru #00558E, navy #002248, putih).
      Referensi: foto penuh + gradasi, sans tebal + aksen serif miring, garis tipis, kartu bayangan lembut. */
   :root { --navy: #002248; --blue: #00558E; --sky: #8EC5F0; --mist: #F1F6FB; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #CBD5E1; font-family: "Plus Jakarta Sans", system-ui, sans-serif; padding: 40px; display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
-  .serif, mark, .bignum, .quote, .quote-mark, .promo-big, .logo-big span { font-family: "Instrument Serif", Georgia, serif; }
 
   .slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; padding: 92px 88px 84px; display: flex; flex-direction: column; color: var(--fg); }
   .slide > * { position: relative; z-index: 1; }
@@ -40,7 +39,7 @@
   h1 { font-size: 90px; line-height: 1.02; font-weight: 800; letter-spacing: -3px; }
   h1.md { font-size: 78px; letter-spacing: -2.5px; }
   h2 { font-size: 60px; line-height: 1.08; font-weight: 800; letter-spacing: -2px; }
-  mark { background: none; color: var(--accent); font-style: italic; font-weight: 400; font-size: 1.14em; letter-spacing: -1px; line-height: .9; }
+  mark { background: none; color: var(--accent); }
   p.sub { font-size: 33px; line-height: 1.5; font-weight: 500; margin-top: 30px; color: var(--muted); max-width: 880px; }
   .spacer { flex: 1; }
 
@@ -52,7 +51,7 @@
   .checks li::before { content: "✓"; flex: none; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent); font-weight: 800; font-size: 21px; display: grid; place-items: center; }
 
   /* step slide */
-  .bignum { font-size: 300px; font-style: italic; font-weight: 400; line-height: .78; letter-spacing: -8px; color: var(--accent); margin: 10px 0 40px -6px; }
+  .bignum { font-size: 220px; font-weight: 800; line-height: .82; letter-spacing: -10px; color: transparent; -webkit-text-stroke: 3px var(--accent); margin: 0 0 44px -4px; }
   .body { font-size: 37px; line-height: 1.55; font-weight: 500; margin-top: 28px; color: var(--muted); }
   .tip { margin-top: 44px; font-size: 29px; line-height: 1.5; font-weight: 600; background: var(--soft); border-left: 3px solid var(--accent); padding: 26px 30px; border-radius: 0 18px 18px 0; }
   .tip::before { content: "Tips — "; font-weight: 800; color: var(--accent); }
@@ -87,48 +86,30 @@
   .wa .v { font-size: 40px; font-weight: 800; letter-spacing: -.5px; }
 
   .logo-big { font-size: 122px; font-weight: 800; letter-spacing: -5px; line-height: 1; margin-bottom: 24px; }
-  .logo-big span { font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: -2px; }
+  .logo-big span { color: var(--accent); }
 
   .ps { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
   .ps .item { background: #fff; color: var(--navy); border-radius: 24px; padding: 26px 34px; box-shadow: 0 30px 60px -34px rgba(0,34,72,.45), 0 0 0 1px rgba(0,34,72,.06); }
-  .ps .q { font-size: 27px; color: #5B6B82; font-weight: 500; line-height: 1.4; font-style: italic; }
+  .ps .q { font-size: 27px; color: #5B6B82; font-weight: 500; line-height: 1.4; }
   .ps .a { font-size: 33px; font-weight: 700; margin-top: 8px; line-height: 1.35; }
   .ps .a::before { content: "→ "; color: var(--blue); }
 
-  .quote-mark { font-size: 340px; line-height: .8; height: 170px; color: var(--accent); }
-  .quote { font-size: 70px; line-height: 1.12; font-weight: 400; letter-spacing: -1px; }
-  .quote mark { font-size: 1em; }
+  .quote-mark { font-size: 260px; font-weight: 800; line-height: .9; height: 150px; color: var(--accent); }
+  .quote { font-size: 54px; line-height: 1.28; font-weight: 700; letter-spacing: -1.5px; }
   .who { margin-top: 56px; display: flex; gap: 22px; align-items: center; font-size: 26px; color: var(--muted); }
   .who b { display: block; color: var(--fg); font-size: 30px; }
   .avatar { width: 88px; height: 88px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 30px; flex: none; }
 
-  .promo-big { font-size: 330px; font-weight: 400; line-height: .8; letter-spacing: -10px; margin: 0 0 20px -8px; }
+  .promo-big { font-size: 250px; font-weight: 800; line-height: .85; letter-spacing: -14px; margin: 0 0 24px -8px; }
   .promo-code { margin-top: 30px; align-self: flex-start; border: 1.5px dashed var(--line); border-radius: 18px; padding: 18px 28px; font-size: 27px; font-weight: 600; }
   .promo-code b { color: var(--accent); letter-spacing: 3px; }
 
 
-  /* loker mitra: 6 posisi dalam kartu putih di latar biru */
-  .loker { padding-top: 80px; padding-bottom: 72px; }
-  .loker .top { margin-bottom: 46px; }
-  .loker .rings { display: none; }
-  .loker h1 { font-size: 72px; letter-spacing: -2.5px; }
-  .loker .perks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .loker .perks span { font-size: 21px; font-weight: 700; padding: 9px 18px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.28); }
-  .loker .perks span b { color: var(--sky); }
-  .jobs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 34px; }
-  .job { background: #fff; color: var(--navy); border-radius: 22px; padding: 20px 24px 20px; box-shadow: 0 30px 60px -34px rgba(0,10,30,.6); }
-  .job .h { display: flex; align-items: baseline; gap: 12px; }
-  .job .no { font-family: "Instrument Serif", serif; font-style: italic; font-size: 40px; line-height: .8; color: var(--blue); }
-  .job .t { font-size: 25px; font-weight: 800; letter-spacing: -.5px; line-height: 1.15; }
-  .job .d { font-size: 18px; color: #5B6B82; margin-top: 6px; font-weight: 500; line-height: 1.35; }
-  .job .q { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(0,34,72,.1); font-size: 17.5px; font-weight: 600; line-height: 1.4; }
-  .job .q::before { content: "SYARAT  "; font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--blue); }
-  .loker .umum { margin-top: 22px; font-size: 20px; line-height: 1.5; color: var(--muted); }
-  .loker .umum b { color: #fff; }
-  .loker .cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 22px; }
-  .loker .cta .wa { margin: 0; padding: 18px 32px; }
-  .loker .cta .wa .v { font-size: 32px; }
-  .loker .cta .note2 { font-size: 19px; color: var(--muted); line-height: 1.45; text-align: right; }
+  /* loker: kotak estimasi bagian mitra */
+  .earn { align-self: flex-start; margin-top: 40px; display: flex; flex-direction: column; background: var(--tag-bg); color: var(--tag-fg); border-radius: 24px; padding: 22px 34px; box-shadow: 0 30px 60px -28px rgba(0,34,72,.55); }
+  .earn .l { font-size: 16px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--tag-l); }
+  .earn .v { font-size: 56px; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
+  .earn .u { font-size: 21px; font-weight: 600; opacity: .75; }
   /* foto b-roll */
   .credit { position: absolute; z-index: 3; font-size: 15px; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,.9); background: rgba(0,20,45,.45); padding: 6px 12px; border-radius: 999px; }
   /* foto penuh satu bidang (latar biru) */
@@ -401,24 +382,52 @@ POSTS.push(
   ]},
 );
 
-// --- Loker mitra freelance (6 posisi dari 6 layanan utama) ---
+// --- Loker mitra freelance: carousel, 1 posisi per slide ---
+// Estimasi bagian mitra = 60% x tarif pelanggan resmi di website (bagi hasil 60/40).
 const JOBS = [
-  ["Helper Angkut & Pindahan", "Angkat kasur, lemari & kardus, tata ulang kamar.", "Fisik prima, siap kerja tim. Punya SIM A = bisa jadi sopir pickup."],
-  ["Kebersihan & Cuci AC", "Deep clean kamar/rumah, cuci AC ringan.", "Teliti & rapi. Paham servis ringan AC jadi nilai plus."],
-  ["Runner Jastip & Pasar", "Belanja pasar pagi, jastip kuliner & oleh-oleh.", "Motor + SIM C aktif, siap pagi, jujur kelola uang titipan."],
-  ["Asisten Digital", "Input Excel, olah dokumen, instal software & servis ringan laptop.", "Lancar Excel/Office, teliti, bisa kerja dari kos."],
-  ["Cuci & Setrika", "Laundry harian anak kos & keluarga muda.", "Telaten, rapi, paham perawatan bahan pakaian."],
-  ["Teman Jalan (Strict Platonic)", "Teman diskusi, partner olahraga, pendamping acara publik.", "Komunikatif & sopan. 100% di ruang publik, tanpa kontak fisik."],
+  { t: "Helper Angkut & Pindahan", d: "Angkat kasur, lemari & kardus, bongkar muat ke pickup, lalu tata ulang kamar baru.",
+    q: ["Fisik prima & siap kerja tim (min. 2 orang)", "Pakai sepatu tertutup saat bertugas", "Punya SIM A? Bisa sekalian jadi sopir pickup"],
+    e: "±Rp33.000", u: "per jam" },
+  { t: "Kebersihan & Cuci AC", d: "Deep clean kamar kos, rumah & dapur, plus cuci AC ringan (filter & evaporator).",
+    q: ["Teliti, rapi & tahan kerja detail", "Paham servis ringan AC jadi nilai plus", "Wajib foto kondisi sebelum & sesudah"],
+    e: "±Rp90.000", u: "per deep clean kamar" },
+  { t: "Runner Jastip & Pasar", d: "Belanja sayur & bumbu di pasar pagi, jastip kuliner, dan oleh-oleh khas Jogja.",
+    q: ["Punya motor & SIM C aktif", "Siap berangkat pagi", "Jujur kelola uang titipan & simpan struk asli"],
+    e: "±Rp18.000", u: "per order + ±Rp3.000/item" },
+  { t: "Asisten Digital", d: "Input data Excel, olah dokumen, instal software, dan servis ringan laptop/PC.",
+    q: ["Lancar Excel / Office", "Teliti dengan angka & data", "Bisa dikerjakan dari kos"],
+    e: "±Rp4.500", u: "per 100 baris data" },
+  { t: "Cuci & Setrika", d: "Laundry harian untuk anak kos dan keluarga muda di Jogja.",
+    q: ["Telaten & rapi", "Paham perawatan bahan pakaian", "Siap antar-jemput cucian di area terdekat"],
+    e: "±Rp6.000", u: "per kg" },
+  { t: "Teman Jalan (Strict Platonic)", d: "Teman diskusi, partner lari atau olahraga, dan pendamping acara publik.",
+    q: ["Komunikatif & sopan", "100% di ruang publik terbuka", "Tanpa kontak fisik — wajib patuh kode etik"],
+    e: "±Rp39.000", u: "per jam" },
 ];
-POSTS.push({ id: "y-loker", theme: "blue", slides: [
-  `${header()}<span class="kicker">Lowongan mitra freelance · Jogja</span>
+const lokerSlides = [
+  `${header("1/9")}<span class="kicker">Lowongan mitra freelance · Jogja</span>
    <h1>Jam kosong di sela kuliah? <mark>Ubah jadi penghasilan.</mark></h1>
-   <div class="perks"><span><b>60%</b> bagi hasil</span><span>Cair <b>2–3 hari</b> kerja</span><span>Daftar <b>gratis</b></span><span>Pilih <b>waktumu</b> sendiri</span></div>
-   <div class="jobs">${JOBS.map(([t, d, q], i) => `<div class="job"><div class="h"><span class="no">0${i + 1}</span><span class="t">${t}</span></div><div class="d">${d}</div><div class="q">${q}</div></div>`).join("")}</div>
-   <p class="umum"><b>Syarat umum:</b> domisili DIY · e-KTP/KTM asli · WhatsApp aktif · kontak darurat keluarga · setuju kode etik. Belum berpengalaman? Ada briefing sebelum tugas pertama.</p>
-   <div class="cta"><div class="wa"><span class="l">DAFTAR</span><span class="v">Link di bio</span></div><div class="note2">Kami tidak pernah minta<br>biaya daftar atau deposit.</div></div>
-   <div class="spacer"></div>`
-]});
+   <p class="sub">6 posisi dibuka. Geser untuk lihat tugas, syarat & estimasi bagianmu.</p>
+   <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+  ...JOBS.map((j, i) => `${header(`${i + 2}/9`)}<span class="kicker">Posisi 0${i + 1}</span>
+   <h2>${j.t}</h2>
+   <p class="body">${j.d}</p>
+   <ul class="checks">${j.q.map(x => `<li>${x}</li>`).join("")}</ul>
+   <div class="earn"><span class="l">Estimasi bagianmu</span><span class="v">${j.e}</span><span class="u">${j.u}</span></div>
+   <div class="spacer"></div>${foot("60% dari tarif pelanggan", "Geser →")}`),
+  `${header("8/9")}<span class="kicker">Yang kamu dapat & syaratnya</span>
+   <h2>Kerja fleksibel, <mark>bayaran jelas.</mark></h2>
+   <ul class="checks"><li>Bagi hasil 60% dari nilai jasa</li><li>Cair 2–3 hari kerja setelah tugas selesai</li><li>Pilih tugas & waktumu sendiri</li><li>Belum berpengalaman? Ada briefing dulu</li></ul>
+   <div class="tip">Syarat umum: domisili DIY, e-KTP/KTM asli, WhatsApp aktif, kontak darurat keluarga, dan setuju kode etik mitra.</div>
+   <div class="spacer"></div>${foot(HANDLE, "Geser →")}`,
+  `${header("9/9")}<span class="kicker">Daftar sekarang</span>
+   <h1 class="md">Daftar mitra <mark>100% gratis.</mark></h1>
+   <p class="sub">Isi formulir lewat link di bio, kirim foto e-KTP/KTM ke admin, ikut briefing, lalu ambil tugas pertamamu.</p>
+   <div class="wa"><span class="l">DAFTAR</span><span class="v">Link di bio</span></div>
+   <div class="spacer"></div>${foot("Tidak pernah ada biaya daftar atau deposit")}`,
+];
+POSTS.push({ id: "y-loker", theme: "blue", slides: lokerSlides });
+
 POSTS.sort((a, b) => a.id.localeCompare(b.id));
 
 // Foto b-roll (Pixabay Content License) di slide pertama — lihat broll/SUMBER-FOTO.md
@@ -436,6 +445,7 @@ const PHOTOS = {
   s10: { src: "broll/pemuda-lanyard-7524866.jpg", pos: "50% 32%", layout: "top" },
   s11: { src: "broll/pasar-hijab-7062598.jpg", pos: "50% 28%", layout: "full" },
   s12: { layout: "lineup", lineup: ["angkut", "teknisi", "pasar", "dapur", "admin"] },
+  "y-loker": { layout: "lineup", lineup: ["angkut", "teknisi", "pasar", "dapur", "admin"] },
   "x-sinoman": { src: "broll/hajatan-jawa-1737184.jpg", pos: "72% 30%", layout: "top" },
 };
 
@@ -469,7 +479,7 @@ for (const post of POSTS) {
     el.className = `slide ${post.theme}`;
     el.id = post.slides.length > 1 ? `${post.id}-${i + 1}` : post.id;
     el.innerHTML = html;
-    if (post.id === "y-loker") el.classList.add("loker");
+    if (post.id === "y-loker" && i > 0 && i < 7) el.className = "slide white";
     const photo = i === 0 && PHOTOS[post.id];
     const bg = (p) => `background-image:url(${p.src});background-position:${p.pos || "center"}`;
     if (photo && photo.cutout) {
