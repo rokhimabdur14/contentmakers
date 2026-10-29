@@ -117,6 +117,42 @@
   .promo-code { margin-top: 26px; align-self: center; border: 3px dashed var(--line); border-radius: 18px; padding: 14px 26px; font-size: 25px; font-weight: 600; }
   .promo-code b { color: var(--sky); letter-spacing: 3px; }
 
+  /* mockup chat WhatsApp (format relatable & perbandingan, ide dari pola konten Lalamove) */
+  .chat-label { margin-top: 26px; font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--soft); text-align: left; }
+  .chat { margin-top: 12px; background: #fff; color: var(--navy); border-radius: 28px; padding: 20px 26px 24px; box-shadow: 0 30px 60px -30px rgba(0,34,72,.55); display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  .white .chat { border: 2px solid #E2E8F0; }
+  .chat .hd { display: flex; align-items: center; gap: 14px; padding-bottom: 14px; border-bottom: 1.5px solid #E2E8F0; }
+  .chat .av { width: 54px; height: 54px; border-radius: 50%; flex: none; background: linear-gradient(135deg, var(--blue-2), var(--blue)); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 20px; }
+  .chat .nm { font-size: 24px; font-weight: 700; line-height: 1.2; }
+  .chat .st { display: block; font-size: 18px; font-weight: 500; color: var(--muted-d); }
+  .msg { max-width: 82%; font-size: 26px; font-weight: 600; line-height: 1.38; padding: 14px 20px; border-radius: 22px; }
+  .msg time { display: block; text-align: right; font-size: 15px; font-weight: 500; color: var(--muted-d); margin-top: 2px; }
+  .msg.in { align-self: flex-start; background: var(--ice); border: 1.5px solid #E2E8F0; border-top-left-radius: 6px; }
+  .msg.out { align-self: flex-end; background: var(--sky); border-top-right-radius: 6px; }
+  h2 + .chat { margin-top: 34px; }
+  .slide:has(.chat)::after, .slide:has(.vote)::after, .slide:has(.roles)::after { display: none; }
+  .chat.ghost { background: transparent; box-shadow: none; border: 2.5px dashed rgba(255,255,255,.35); color: #fff; }
+  .chat.ghost .hd { border-bottom-color: rgba(255,255,255,.25); }
+  .chat.ghost .av { background: rgba(255,255,255,.22); }
+  .chat.ghost .st, .chat.ghost time { color: rgba(255,255,255,.7); }
+  .chat.ghost .msg.in { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.2); }
+  .chat.ghost .msg.out { background: rgba(255,255,255,.24); }
+
+  /* polling "komen nomornya" (2×2 foto) */
+  .vote { position: relative; margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .vote .t { position: relative; height: 290px; border-radius: 28px; border: 8px solid #fff; background-size: cover; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(0,34,72,.6); text-align: left; }
+  .vote .t::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,56,101,.92) 100%); }
+  .vote .t b { position: absolute; z-index: 1; left: 16px; top: 16px; width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--blue-2), var(--blue)); color: #fff; font-size: 38px; font-weight: 800; border: 5px solid #fff; }
+  .vote .t span { position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 18px; color: #fff; font-size: 27px; font-weight: 700; line-height: 1.25; }
+  .vote .credit { z-index: 2; top: 18px; right: 18px; bottom: auto; }
+
+  /* loker 1 slide: kalimat besar + daftar posisi 2 kolom */
+  h1.xl { font-size: 116px; line-height: 1.04; letter-spacing: -3px; }
+  .list-label { margin-top: 44px; font-size: 22px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--soft); }
+  .roles { list-style: none; margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: left; }
+  .roles li { display: flex; align-items: center; gap: 14px; background: var(--card); color: var(--card-fg); font-size: 25px; font-weight: 600; line-height: 1.25; padding: 10px 20px 10px 10px; border-radius: 40px; box-shadow: 0 14px 30px -18px rgba(0,34,72,.55); }
+  .roles li::before { content: "✓"; flex: none; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-2), var(--blue)); color: #fff; font-weight: 800; font-size: 22px; display: grid; place-items: center; }
+
   /* footer: catatan + bar kontak */
   .foot-note { position: absolute !important; left: 80px; right: 80px; bottom: 138px; font-size: 21px; font-weight: 600; color: var(--soft); }
   .foot { position: absolute !important; z-index: 6 !important; left: 64px; right: 64px; bottom: 44px; height: 78px; display: flex; align-items: center; gap: 26px; padding: 0 14px; border-radius: 22px; font-size: 21px; font-weight: 600; color: var(--fg); }
@@ -219,14 +255,17 @@ const POSTS = [
      <div class="spacer"></div>${foot("Simpan postingan ini untuk H-7 nanti")}`
   ]},
 
+  // Harga jelas, format "dua chat" (pola perbandingan ala konten Lalamove)
   { id: "s09", theme: "blue", slides: [
     `${header()}<span class="kicker">Prinsip kami</span>
-     <h1 class="md">Harga ditulis <mark>sebelum</mark> mitra berangkat. Bukan dihitung di lokasi.</h1>
-     <div class="compare">
-       <div class="bubble no"><b>YANG KAMI HINDARI</b><span>"Nanti dihitung di tempat ya, Kak."</span></div>
-       <div class="bubble yes"><b>YANG KAMU TERIMA</b>Rincian tarif, jarak & biaya tambahan tertulis di chat. Kamu setuju dulu, baru mitra jalan.</div>
-     </div>
-     <div class="spacer"></div>${foot("Batal gratis selama mitra belum berangkat")}`
+     <h2>Chat yang bikin deg-degan vs <mark>chat yang bikin tenang.</mark></h2>
+     <div class="chat ghost"><div class="hd"><div class="av">?</div><div class="nm">Jasa angkut entah siapa<span class="st">online</span></div></div>
+       <div class="msg out">Pindahan kos berapa, Mas?<time>19.02</time></div>
+       <div class="msg in">Nanti dihitung di tempat ya, Kak.<time>19.10</time></div></div>
+     <div class="chat"><div class="hd"><div class="av">BA</div><div class="nm">Admin bantuinaja.id<span class="st">online</span></div></div>
+       <div class="msg out">Pindahan kos berapa, Kak?<time>19.02</time></div>
+       <div class="msg in">Paket Hemat Rp350.000 · jarak 4 km gratis · total Rp350.000. Kalau setuju, mitra berangkat.<time>19.04</time></div></div>
+     <div class="spacer"></div>${foot("Ilustrasi chat · batal gratis selama mitra belum berangkat")}`
   ]},
 
   { id: "s08", theme: "white", slides: [
@@ -338,7 +377,23 @@ POSTS.push(
      <div class="spacer"></div>${foot("Chat WA " + WA)}`
   ]},
 
+  // Relatable: janji teman vs hari H pindahan (pola meme "ekspektasi vs realita" ala Lalamove)
   { id: "s02", theme: "white", slides: [
+    `${header()}<span class="kicker">Relate nggak?</span>
+     <h2>Janji teman <mark>vs hari H pindahan</mark></h2>
+     <p class="chat-label">Minggu lalu</p>
+     <div class="chat"><div class="hd"><div class="av">TK</div><div class="nm">Teman sekos<span class="st">online</span></div></div>
+       <div class="msg in">Kabarin aja kalau pindahan, pasti aku bantu angkat!<time>21.14</time></div>
+       <div class="msg out">Siap, aku pegang janjimu ya.<time>21.15</time></div></div>
+     <p class="chat-label">Hari H, jam 7 pagi</p>
+     <div class="chat"><div class="hd"><div class="av">TK</div><div class="nm">Teman sekos<span class="st">terakhir dilihat 2 hari lalu</span></div></div>
+       <div class="msg out">Aku udah di depan kos. Lemarinya berat banget...<time>07.02</time></div>
+       <div class="msg out">Halo??<time>07.31</time></div></div>
+     <div class="spacer"></div>${foot("Ilustrasi chat · Tenang, mitra kami datang beneran.")}`
+  ]},
+
+  // cadangan: versi lama postingan 02 (tiga keluhan)
+  { id: "x-masalah", theme: "white", slides: [
     `${header()}<span class="kicker">Masalah → jawaban</span>
      <h2>Tiga keluhan yang paling sering kami dengar:</h2>
      <div class="ps">
@@ -349,7 +404,23 @@ POSTS.push(
      <div class="spacer"></div>${foot(HANDLE)}`
   ]},
 
+  // Interaksi: polling lewat komentar (pola "pilih jagoanmu, komen" ala Lalamove)
   { id: "s13", theme: "blue", slides: [
+    `${header()}<span class="kicker">Komen nomornya</span>
+     <h1 class="md">Urusan mana yang <mark>paling bikin mager?</mark></h1>
+     <div class="vote">
+       <div class="t" style="background-image:url(broll/kardus-lakban-3883980.jpg);background-position:50% 55%"><b>1</b><span>Angkat lemari & kardus</span></div>
+       <div class="t" style="background-image:url(broll/pasar-hijab-7062598.jpg);background-position:60% 40%"><b>2</b><span>Antre pasar subuh</span></div>
+       <div class="t" style="background-image:url(broll/web/web-laundry.jpg);background-position:50% 50%"><b>3</b><span>Setrika cucian numpuk</span></div>
+       <div class="t" style="background-image:url(broll/meja-kerja-5517762.jpg);background-position:50% 50%"><b>4</b><span>Input data Excel</span></div>
+       <span class="credit">Foto ilustrasi</span>
+     </div>
+     <p class="sub">Tulis nomornya di komentar. Boleh lebih dari satu.</p>
+     <div class="spacer"></div>${foot(HANDLE)}`
+  ]},
+
+  // cadangan: testimoni (pakai setelah ada testimoni asli + izin)
+  { id: "x-testimoni", theme: "blue", slides: [
     `${header()}<span class="kicker">Kata pelanggan</span>
      <div class="quote-card"><div class="quote-mark">“</div>
      <p class="quote">Barang banyak, nggak ada teman cowok yang bisa bantu angkat lemari. Datang 2 helper, ramah, sopan, dan <mark>langsung rapi dalam 2 jam.</mark></p>
@@ -440,6 +511,16 @@ const lokerSlides = [
 ];
 POSTS.push({ id: "y-loker", theme: "blue", slides: lokerSlides });
 
+// --- Loker versi 1 slide: hook besar di tengah + daftar posisi ---
+POSTS.push({ id: "z-loker-1slide", theme: "blue", slides: [
+  `${header()}<span class="kicker">Dicari: mitra freelance · Jogja</span>
+   <h1 class="xl">Jam kosongmu <mark>bisa digaji.</mark></h1>
+   <p class="sub">Mahasiswa, ibu rumah tangga, karyawan shift, fresh graduate — ambil tugas pas senggang, bagi hasil 60%.</p>
+   <p class="list-label">Posisi yang dibuka</p>
+   <ul class="roles"><li>Helper angkut & pindahan</li><li>Kebersihan & cuci AC</li><li>Runner jastip pasar</li><li>Cuci & setrika</li><li>Asisten digital & Excel</li><li>Tim sinoman hajatan</li></ul>
+   <div class="spacer"></div>${foot("Daftar gratis lewat link di bio · tanpa deposit")}`
+]});
+
 POSTS.sort((a, b) => a.id.localeCompare(b.id));
 
 // ===== Tata letak per slide (gaya referensi feed) =====
@@ -448,7 +529,7 @@ POSTS.sort((a, b) => a.id.localeCompare(b.id));
 const C = (n) => `broll/cutout/${n}.png`;
 const LAYOUT = {
   s01: { person: "hijab-presentasi", h: 860, x: -224 },
-  s02: { person: "hijab-tunjuk-atas", h: 800, x: -248 },
+  "x-masalah": { person: "hijab-tunjuk-atas", h: 800, x: -248 },
   s03: { person: "hijab-hp", h: 880, x: -164 },
   s04: { person: "pria-angkut", h: 780, x: -106 },
   "s05-1": { full: "broll/tangan-hp-7304257.jpg", pos: "62% 40%" },
@@ -472,7 +553,6 @@ const LAYOUT = {
   "s08-5": { frame: "broll/web/web-digital.jpg", pos: "50% 40%", fh: 270 },
   "s08-6": { frame: "broll/motor-malam-6682922.jpg", pos: "50% 55%", fh: 270 },
   "s08-7": { person: "hijab-hp", h: 820, x: -142 },
-  s09: { person: "hijab-bayar", h: 760, x: -538 },
   s10: { person: "pria-idcard", h: 820, x: -130 },
   s11: { bottom: "hijab-belanja", h: 520 },
   "s12-1": { lineupFill: ["angkut", "teknisi", "pasar", "dapur", "admin"] },

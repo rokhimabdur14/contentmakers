@@ -1,6 +1,6 @@
-# 13 · Testimoni
+# Cadangan · Testimoni
 
-- **Jadwal:** Senin, 30 November 2026 · **19.00 WIB**
+- **Jadwal:** belum dijadwalkan (dulu slot 13, 30 Nov)
 - **Kategori:** Layanan — Menjelaskan cara kerja layanan & membangun rasa aman pelanggan
 - **Pillar:** Di balik mitra
 - **Format:** Single image

@@ -1,6 +1,6 @@
-# 02 · Masalah dan Solusi
+# Cadangan · Masalah dan Solusi
 
-- **Jadwal:** Rabu, 4 November 2026 · **12.00 WIB**
+- **Jadwal:** belum dijadwalkan (dulu slot 02, 4 Nov)
 - **Kategori:** Akuisisi — Menjangkau orang baru & menambah followers
 - **Pillar:** Harga jelas di depan
 - **Format:** Single image
@@ -10,3 +10,6 @@
 
 ## Alt text
 Desain terang berisi tiga keluhan pelanggan dan jawabannya masing-masing.
+
+## Catatan
+Diganti oleh postingan relatable "Janji teman vs hari H" karena isinya tumpang-tindih dengan 09 (harga jelas) dan 10 (verifikasi mitra). Pakai bila ada slot kosong.
